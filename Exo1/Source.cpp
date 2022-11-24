@@ -14,19 +14,21 @@ using namespace std;
 //#include "./lbp_caroline/lbplibrary.hpp"
 //using namespace lbplibrary;
 
-//Variable Changeable
+/*
+    Variable Changeable
+*/
 
-// Les type d'execution :
+// Les types d'execution :
 // 0 => Normal LBP
 // 1 => Library LBP (Caroline)
 const int exec_mode = 0;
 
-// Choix du data
+// Choix du data :
 // 0 => Parking
 // 1 => CINIC 10
 const int data_choice = 0;
 
-// Traitement image
+// Traitement image :
 // 0 => Gray Scale
 // 1 => Color
 const int color_choice = 1;
@@ -624,8 +626,8 @@ int main(){
     cout << "Initiation du fichier Test..." << endl;
     reset_fichier("test.txt");
 
-    string path_train = "./Images/train1_6000";
-    string path_test = "./Images/test1";
+    string path_train = "";
+    string path_test = "";
     string tab_classes[total_class]{ "airplane", "automobile", "bird", "cat","deer","dog","frog","horse","ship","truck" };
     string tab_classes_parking[total_class]{ "free", "busy" };
     string* p_tab = tab_classes;
@@ -633,13 +635,13 @@ int main(){
     switch (data_choice) {
         case 0:            
             p_tab = tab_classes_parking;
-            path_train = "./Images/base";
-            path_test = "./Images/query";
+            path_train = "./Images/parking_base";
+            path_test = "./Images/parking_query";
             break;
         case 1:            
             p_tab = tab_classes;
-            path_train = "./Images/train1";
-            path_test = "./Images/test1";
+            path_train = "./Images/cinic_train_2000";
+            path_test = "./Images/cinic_test_1000";
             break;
     }    
     
