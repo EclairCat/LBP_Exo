@@ -1,5 +1,6 @@
 //! [includes]
 #include <opencv2/core.hpp>
+#include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <vector>
@@ -11,8 +12,9 @@
 using namespace cv;
 using namespace std;
 
-//#include "./lbp_caroline/lbplibrary.hpp"
-//using namespace lbplibrary;
+
+#include "./package_lbp/LBP.h"
+#include "./package_lbp/olbp/OLBP.h"
 
 /*
     Variable Changeable
@@ -21,7 +23,7 @@ using namespace std;
 // Les types d'execution :
 // 0 => Normal LBP
 // 1 => Library LBP (Caroline)
-const int exec_mode = 0;
+const int exec_mode = 1;
 
 // Choix du data :
 // 0 => Parking
@@ -317,8 +319,8 @@ void init_model(String fichier_txt, String inputDirectory, int mode) {
 }
 
 void init_model_with_lbp_lib(string fichier_txt, string inputDirectory, int mode) {
-    //LBP* lbp;
-    //lbp = new OLBP;
+    lbplibrary::LBP* lbp;
+    lbp = new lbplibrary::OLBP;
 
     Mat img_lbp;
     vector <string> filename;
@@ -339,7 +341,7 @@ void init_model_with_lbp_lib(string fichier_txt, string inputDirectory, int mode
                 cout << "image loading failed :  " << filename[count] << endl;
             }
             else {
-                //lbp->run(img, img_lbp);
+                lbp->run(img, img_lbp);
                 int* tab_vec_desc = img_lbp_to_vec(img_lbp);
 
                 monFlux << mode << " ";
@@ -437,31 +439,6 @@ int distance_ChiSquare(int* vec1, int* vec2, int size) {
     return res;
 }
 
-//Distance Intersection
-int distance_Intersection(int* vec1, int* vec2, int size) {
-    int res = 0;
-
-    for (int x = 0; x < size; x++) {
-        res = res + pow(vec1[x] - vec2[x], 2);
-        //cout << "Iterration : " << x << " Donnee : " << *(vec1 + x) << " " << *(vec2 + x) << endl;
-    }
-
-    return res;
-}
-
-//Distance Correlation
-int distance_Correlation(int* vec1, int* vec2, int size) {
-    int res = 0;
-
-    for (int x = 0; x < size; x++) {
-        res = res + pow(vec1[x] - vec2[x], 2);
-        //cout << "Iterration : " << x << " Donnee : " << *(vec1 + x) << " " << *(vec2 + x) << endl;
-    }
-
-    return res;
-}
-
-
 float compare_model_and_test(int method_compare, string name) { 
 
     cout << endl;
@@ -534,13 +511,7 @@ float compare_model_and_test(int method_compare, string name) {
                         break;
                     case 3:
                         res = distance_ChiSquare(vec_desc_test, vec_desc_model, 256);
-                        break;
-                    case 4:
-                        res = distance_Intersection(vec_desc_test, vec_desc_model, 256);
-                        break;
-                    case 5:
-                        res = distance_Correlation(vec_desc_test, vec_desc_model, 256);
-                        break;
+                        break;                    
                 }
                 
                
@@ -580,7 +551,6 @@ float compare_model_and_test(int method_compare, string name) {
     }
 
 }
-
 
 int main(){    
 
@@ -655,8 +625,8 @@ int main(){
                 break;
             case 1:                
                 //Using Lib LBP
-                //init_model_with_lbp_lib("model.txt", path_train + "/" + p_tab[count_class], count_class);
-                //init_model_with_lbp_lib("test.txt", path_test + "/" + p_tab[count_class], count_class);
+                init_model_with_lbp_lib("model.txt", path_train + "/" + p_tab[count_class], count_class);
+                init_model_with_lbp_lib("test.txt", path_test + "/" + p_tab[count_class], count_class);
                 break;
         }       
     }

@@ -133,7 +133,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="package_lbp\bglbp\BGLBP.cpp" />
+    <ClCompile Include="package_lbp\cslbp\CSLBP.cpp" />
+    <ClCompile Include="package_lbp\csldp\CSLDP.cpp" />
+    <ClCompile Include="package_lbp\cssiltp\CSSILTP.cpp" />
+    <ClCompile Include="package_lbp\elbp\ELBP.cpp" />
+    <ClCompile Include="package_lbp\oclbp\OCLBP.cpp" />
+    <ClCompile Include="package_lbp\olbp\OLBP.cpp" />
+    <ClCompile Include="package_lbp\scslbp\SCSLBP.cpp" />
+    <ClCompile Include="package_lbp\siltp\SILTP.cpp" />
+    <ClCompile Include="package_lbp\varlbp\VARLBP.cpp" />
+    <ClCompile Include="package_lbp\xcslbp\XCSLBP.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="package_lbp\bglbp\BGLBP.h" />
+    <ClInclude Include="package_lbp\cslbp\CSLBP.h" />
+    <ClInclude Include="package_lbp\csldp\CSLDP.h" />
+    <ClInclude Include="package_lbp\cssiltp\CSSILTP.h" />
+    <ClInclude Include="package_lbp\elbp\ELBP.h" />
+    <ClInclude Include="package_lbp\LBP.h" />
+    <ClInclude Include="package_lbp\oclbp\OCLBP.h" />
+    <ClInclude Include="package_lbp\olbp\OLBP.h" />
+    <ClInclude Include="package_lbp\scslbp\SCSLBP.h" />
+    <ClInclude Include="package_lbp\siltp\SILTP.h" />
+    <ClInclude Include="package_lbp\varlbp\VARLBP.h" />
+    <ClInclude Include="package_lbp\xcslbp\XCSLBP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
