@@ -23,12 +23,12 @@ using namespace std;
 // Les types d'execution :
 // 0 => Normal LBP
 // 1 => Library LBP (Caroline)
-const int exec_mode = 1;
+const int exec_mode = 0;
 
 // Choix du data :
 // 0 => Parking
 // 1 => CINIC 10
-const int data_choice = 0;
+const int data_choice = 1;
 
 // Traitement image :
 // 0 => Gray Scale
