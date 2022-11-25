@@ -14,7 +14,7 @@ using namespace std;
 
 
 #include "./package_lbp/LBP.h"
-#include "./package_lbp/olbp/OLBP.h"
+#include "./package_lbp/xcslbp/XCSLBP.h"
 
 /*
     Variable Changeable
@@ -23,7 +23,7 @@ using namespace std;
 // Les types d'execution :
 // 0 => Normal LBP
 // 1 => Library LBP (Caroline)
-const int exec_mode = 0;
+const int exec_mode = 1;
 
 // Choix du data :
 // 0 => Parking
@@ -36,7 +36,7 @@ const int data_choice = 1;
 const int color_choice = 1;
 
 
-//Fonctionel!
+//Converti une image en vecteur descriptif avec un path en param
 int* lbp_Img_to_Vec(String path_img) {
 
     Mat img = imread(path_img);
@@ -140,6 +140,7 @@ int* lbp_Img_to_Vec(String path_img) {
     return vec_desc;
 }
 
+//Converti une image en vecteur descriptif avec un image en param
 int* lbp_Img_to_Vec_from_img(Mat img) {    
 
     int pixelC;
@@ -237,6 +238,7 @@ int* lbp_Img_to_Vec_from_img(Mat img) {
     return vec_desc;
 }
 
+//Converti une image en vecteur descriptif en utilisant la librairie ZXC avec une image en param
 int* img_lbp_to_vec(Mat img) {
     //Mat img = imread(path_img, cv::ImreadModes::IMREAD_GRAYSCALE);    
 
@@ -320,9 +322,9 @@ void init_model(String fichier_txt, String inputDirectory, int mode) {
 
 void init_model_with_lbp_lib(string fichier_txt, string inputDirectory, int mode) {
     lbplibrary::LBP* lbp;
-    lbp = new lbplibrary::OLBP;
-
+    lbp = new lbplibrary::XCSLBP;
     Mat img_lbp;
+
     vector <string> filename;
 
 
